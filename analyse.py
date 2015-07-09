@@ -1,4 +1,9 @@
 import pandas as pd
 
-print pd.read_csv('../models-to-csv/result.csv')
+data = pd.read_csv('../models-to-csv/result.csv')
 
+# Highest prices:
+print data.sort('price', ascending = False).head()
+
+# Most expensive models:
+print data.groupby('model').mean().sort('price', ascending = False).head()
