@@ -42,6 +42,13 @@ print most_expensive_standalone.groupby('category').agg(['mean', 'count'])['pric
 print "Most commonly least expensive:"
 print least_expensive_standalone.groupby('category').agg(['mean', 'count'])['price'].sort(['count', 'mean'], ascending = True)
 
+print "Biggest difference:"
+def difference(group):
+	group['difference'] = group['price'].max() - group['price'].min()
+	return group
+print data.groupby('model', as_index = False).apply(difference).reset_index(drop = True).sort('difference').drop_duplicates(cols = 'model')[['model', 'difference']]
+
+
 # Most expensive for each model, getting the data frame:
 # inds = data.groupby('model')['price'].transform(max) == data['price']
 # data = data[inds]
