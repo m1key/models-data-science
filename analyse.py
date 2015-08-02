@@ -48,7 +48,10 @@ def difference(group):
 	return group
 print data.groupby('model', as_index = False).apply(difference).reset_index(drop = True).sort('difference').drop_duplicates(cols = 'model')[['model', 'difference']]
 
-print "Most expensive for each model, different way:"
-print data['price'].groupby[data['name']].max().head()
-
+print "Most expensive for each model containing a string:"
 print most_expensive_for_each_model[most_expensive_for_each_model['category'].str.contains("all P")]
+
+print "Standard deviation:"
+
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
+print data.groupby('model')['price'].std().order(ascending = False)
