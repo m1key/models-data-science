@@ -48,9 +48,7 @@ def difference(group):
 	return group
 print data.groupby('model', as_index = False).apply(difference).reset_index(drop = True).sort('difference').drop_duplicates(cols = 'model')[['model', 'difference']]
 
+print "Most expensive for each model, different way:"
+print data['price'].groupby[data['name']].max().head()
 
-# Most expensive for each model, getting the data frame:
-# inds = data.groupby('model')['price'].transform(max) == data['price']
-# data = data[inds]
-# data.reset_index(drop = True, inplace = True)
-# print data
+print most_expensive_for_each_model[most_expensive_for_each_model['category'].str.contains("all P")]
