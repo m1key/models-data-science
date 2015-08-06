@@ -67,3 +67,6 @@ print data[data['model'].isin(most_expensive_bm['model'])]
 
 print "STD and mean for those for whom most expensive category contains Black:"
 print data[data['model'].isin(most_expensive_standalone[most_expensive_standalone['category'].str.contains("Black")]['model'])].groupby(['model']).agg(['mean', 'std'])
+
+print "Sort by STD:"
+print data[data['model'].isin(most_expensive_standalone[most_expensive_standalone['category'].str.contains("p Off")]['model'])].groupby(['model']).agg(['std', 'mean']).sort([('price', 'std')])
