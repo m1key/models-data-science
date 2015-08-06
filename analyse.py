@@ -58,3 +58,10 @@ print data.groupby('model')['price'].std().order(ascending = False)
 
 print "Least to most specialised, subset of columns:"
 print data.groupby(['model']).count().sort('category')['category']
+
+print "Where most expensive contains the word Black"
+most_expensive_bm = most_expensive_standalone[most_expensive_standalone['category'].str.contains("Black")]
+
+print "All for those above"
+print data[data['model'].isin(most_expensive_bm['model'])]
+
