@@ -55,3 +55,6 @@ print "Standard deviation:"
 
 pd.set_option('display.float_format', lambda x: '%.3f' % x)
 print data.groupby('model')['price'].std().order(ascending = False)
+
+print "Least to most specialised, subset of columns:"
+print data.groupby(['model']).count().sort('category')['category']
