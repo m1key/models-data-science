@@ -70,3 +70,9 @@ print data[data['model'].isin(most_expensive_standalone[most_expensive_standalon
 
 print "Sort by STD:"
 print data[data['model'].isin(most_expensive_standalone[most_expensive_standalone['category'].str.contains("p Off")]['model'])].groupby(['model']).agg(['std', 'mean']).sort([('price', 'std')])
+
+withS = data[data['category'].str.startswith('Sma')]
+allWithS = data[data['model'].isin(withS['model'])]
+allWithS.groupby('model').count().reset_index().sort(['price'])
+
+data[data['model'].isin(data[data['category'].str.startswith('Bla')]['model'])].groupby('model').count().reset_index().sort(['price'])
